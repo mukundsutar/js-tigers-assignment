@@ -3,7 +3,7 @@ import Dashboard from "./dashboard/page";
 
 export default function Home() {
   return (
-    <main className="flex w-full flex-col h-full justify-start items-start">
+    <main className="flex w-full flex-col h-full justify-start items-start scroll-smooth">
       <Navbar />
       <Dashboard />
     </main>
