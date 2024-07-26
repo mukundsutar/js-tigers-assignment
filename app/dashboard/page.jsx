@@ -2,7 +2,7 @@
 import React from "react";
 import StatDisplay from "../components/statDisplay";
 import Image from "next/image";
-import Map from "../assets/map.png";
+import MapPicture from "../assets/map.png";
 import PieData from "../components/pieData";
 import DocumentListItem from "../components/documentListItem";
 import Annoucement from "../components/annoucement";
@@ -11,6 +11,7 @@ import BookingsUtilized from "../assets/icons/booking-utilized.svg";
 import BookingCancelled from "../assets/icons/booking-cancelled.svg";
 import Utilization from "../assets/icons/utilization.svg";
 import CustomTabs from "../components/custonTabs";
+import Map from "../components/map";
 
 export default function Dashboard() {
   const pieChart = [
@@ -48,13 +49,7 @@ export default function Dashboard() {
         </div>
 
         {/* map section */}
-        <Image
-          src={Map}
-          width={"auto"}
-          height={"auto"}
-          className="rounded-2xl"
-          alt="map placeholder"
-        />
+        <Map />
 
         {/* pie chart section */}
         <div className="flex flex-col rounded-2xl bg-[#fff] p-4 text-[#000]">
@@ -64,7 +59,7 @@ export default function Dashboard() {
             </div>
 
             {/* can use button here, try later */}
-            <div className="flex w-[50%] justify-start items-start">
+            <div className="flex w-[50%] items-start justify-start">
               <CustomTabs />
             </div>
           </div>

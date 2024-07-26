@@ -1,13 +1,10 @@
-
 import Navbar from "./components/navbar";
 import Dashboard from "./dashboard/page";
 
 export default function Home() {
   return (
-    <main className="flex w-full flex-col h-full justify-start items-start scroll-smooth">
-      
+    <main className="flex h-full w-full flex-col items-start justify-start">
       {/* <Dashboard /> */}
-      
     </main>
   );
 }

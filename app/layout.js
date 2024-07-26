@@ -14,9 +14,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className="drawer lg:drawer-open">
+        <div className="drawer lg:drawer-open scroll-smooth">
           <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-          <div className="drawer-content flex w-full flex-col items-center justify-center">
+
+          <div className="drawer-content flex w-full flex-col items-center justify-center overflow-hidden">
             {/* Page content here */}
             <Navbar />
             {children}

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import BoatIcon from "./boatIcon";
-import AirIcon from "./airIcon";
-import LandIcon from "./landIcon";
+import BoatIcon from "./svgIcons/boatIcon";
+import AirIcon from "./svgIcons/airIcon";
+import LandIcon from "./svgIcons/landIcon";
 
 export default function CustomTabs() {
   const [activeTab, setActiveTab] = useState(0); // Start with the first tab as active
