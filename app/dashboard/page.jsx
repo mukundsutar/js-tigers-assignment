@@ -10,6 +10,7 @@ import TotalBookings from "../assets/icons/booking-total.svg";
 import BookingsUtilized from "../assets/icons/booking-utilized.svg";
 import BookingCancelled from "../assets/icons/booking-cancelled.svg";
 import Utilization from "../assets/icons/utilization.svg";
+import CustomTabs from "../components/custonTabs";
 
 export default function Dashboard() {
   const pieChart = [
@@ -57,21 +58,16 @@ export default function Dashboard() {
 
         {/* pie chart section */}
         <div className="flex flex-col rounded-2xl bg-[#fff] p-4 text-[#000]">
-          <div className="flex w-[50%] items-start">Pie Chart Analysis</div>
-
-          {/* can use button here, try later */}
-          {/* <div className="flex w-[50%] items-start">
-            <div className="flex h-12 flex-row border-b-4 justify-center items-baseline">
-              {" "}
-              <Image
-                src={Boat}
-                width={"auto"}
-                height={"auto"}
-                className="rounded-2xl"
-              />
-              <p>Sea</p>
+          <div className="flex flex-row">
+            <div className="flex w-[50%] items-start font-bold">
+              Pie Chart Analysis
             </div>
-          </div> */}
+
+            {/* can use button here, try later */}
+            <div className="flex w-[50%] justify-start items-start">
+              <CustomTabs />
+            </div>
+          </div>
 
           <div className="flex h-fit flex-row justify-between">
             {pieChart.map((item, index) => (

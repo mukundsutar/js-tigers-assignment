@@ -1,32 +1,13 @@
 "use client";
-import React from "react";
-import StatDisplay from "../components/statDisplay";
-import Image from "next/image";
-import Map from "../assets/map.png";
-import PieData from "../components/pieData";
-import DocumentListItem from "../components/documentListItem";
-import Annoucement from "../components/annoucement";
-import TotalBookings from "../assets/icons/booking-total.svg";
-import BookingsUtilized from "../assets/icons/booking-utilized.svg";
-import BookingCancelled from "../assets/icons/booking-cancelled.svg";
-import Utilization from "../assets/icons/utilization.svg";
-import Navbar from "../components/navbar";
+import React, { useState } from "react";
 import FilterAnalytics from "../components/filterAnalytics";
 import Milestones from "../components/milestones";
 import Timelines from "../components/timelines";
 import ShipmentPhase from "../components/shipmentPhase";
 import TableDisplay from "../components/tableDisplay";
+import CustomTabs from "../components/custonTabs";
 
 export default function Dashboard() {
-  const pieChart = [
-    "Origin Port",
-    "Destination Port",
-    "Carrier",
-    "Consignee or Shipper",
-    "Milestones",
-  ];
-
-  const arr = ["", "", "", "", "", "", "", ""];
   const shipmentPhaseArray = [
     "Loading",
     "Discharge",
@@ -35,24 +16,28 @@ export default function Dashboard() {
     "Consignee",
     "Carrier",
   ];
-  const statsArray = [
-    { title: "Total Bookings", value: "501 Bookings", icon: TotalBookings },
-    {
-      title: "Bookings Utilized",
-      value: "501 Bookings",
-      icon: BookingsUtilized,
-    },
-    { title: "Booking Cancelled", value: "0 Bookings", icon: BookingCancelled },
-    { title: "Utilization", value: "100%", icon: Utilization },
-  ];
+
+  const [buttonToggle, setButtonToggle] = useState(false);
 
   return (
     <>
       <div className="flex h-full w-full flex-col space-y-5 bg-[#f1f1f1] px-10 py-5">
+        <div className="mx-auto"><CustomTabs /></div>
+
         {/* shipments/container toggle */}
-        <div className="mx-auto w-fit space-x-12 rounded-2xl bg-white p-4 shadow-md">
-          <button className="btn">Shipments</button>
-          <button className="btn">Containers</button>
+        <div className="mx-auto w-fit space-x-10 rounded-2xl bg-white p-4 shadow-md">
+          <button
+            className={`btn btn-sm ${!buttonToggle ? "btn-active border-0 bg-[#e7e0e0] text-[#856562]" : "border-0 bg-white text-[#969596] shadow-none"}`}
+            onClick={() => setButtonToggle(false)}
+          >
+            Shipments
+          </button>
+          <button
+            className={`btn btn-sm ${buttonToggle ? "btn-active border-0 bg-[#e7e0e0] text-[#856562]" : "border-0 bg-white text-[#969596] shadow-none"}`}
+            onClick={() => setButtonToggle(true)}
+          >
+            Containers
+          </button>
         </div>
 
         {/* filter */}
@@ -76,8 +61,8 @@ export default function Dashboard() {
           ))}
         </div>
 
-        <div className="bg-white shadow-md p-4 rounded-2xl">
-          <TableDisplay/>
+        <div className="space-y-4 rounded-2xl bg-white p-4 shadow-md">
+          <TableDisplay />
         </div>
       </div>
     </>
