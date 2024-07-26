@@ -1,11 +1,7 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 export default function TableDisplay() {
-  const [currentRows, setCurrentRows] = useState();
-  const [startRow, setStartRow] = useState();
-  const [endRow, setEndRows] = useState();
-
   const tableData = [
     {
       id: 1,
@@ -112,32 +108,86 @@ export default function TableDisplay() {
       favoriteColor: "Cyan",
     },
     { id: 20, name: "Elizabeth Olsen", job: "Nurse", favoriteColor: "Magenta" },
+    {
+      id: 21,
+      name: "Mark Ruffalo",
+      job: "Environmental Scientist",
+      favoriteColor: "Brown",
+    },
+    {
+      id: 22,
+      name: "Scarlett Johansson",
+      job: "Actress",
+      favoriteColor: "Lavender",
+    },
+    {
+      id: 23,
+      name: "Jeremy Renner",
+      job: "Architect",
+      favoriteColor: "Maroon",
+    },
+    {
+      id: 24,
+      name: "Chris Hemsworth",
+      job: "Fitness Trainer",
+      favoriteColor: "Navy",
+    },
+    {
+      id: 25,
+      name: "Tom Holland",
+      job: "Web Developer",
+      favoriteColor: "Aqua",
+    },
+    {
+      id: 26,
+      name: "Zendaya Coleman",
+      job: "Model",
+      favoriteColor: "Turquoise",
+    },
+    {
+      id: 27,
+      name: "Benedict Cumberbatch",
+      job: "Doctor",
+      favoriteColor: "Cyan",
+    },
+    { id: 28, name: "Elizabeth Olsen", job: "Nurse", favoriteColor: "Magenta" },
   ];
 
-  const maxRows = 26;
-  const maxAllowedRows = 5;
-  let totalPages = 0;
+  const [currentPage, setCurrentPage] = useState(1);
+  const [rowsPerPage, setRowsPerPage] = useState(5);
 
-  if (maxRows % maxAllowedRows == 0) {
-    totalPages = maxRows / maxAllowedRows;
-  } else {
-    let extra = 0;
-    extra = maxRows % maxAllowedRows;
-    totalPages = (maxRows - extra) / maxAllowedRows;
-    totalPages = totalPages + 1;
-  }
+  const indexOfLastRow = currentPage * rowsPerPage;
+  const indexOfFirstRow = indexOfLastRow - rowsPerPage;
+  const currentRows = tableData.slice(indexOfFirstRow, indexOfLastRow);
+  const maxRows = tableData.length;
 
-  console.log(totalPages);
+  const totalPages = Math.ceil(tableData.length / rowsPerPage);
 
-  useEffect(() => {
-    setStartRow(0);
-    setEndRows(maxAllowedRows);
-  }, []);
+  const handlePrevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  const handlePageClick = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
+  const handleRowsPerPageChange = (event) => {
+    setRowsPerPage(Number(event.target.value));
+    setCurrentPage(1); // Reset to first page when changing rows per page
+  };
 
   return (
     <>
       <div className="overflow-x-auto">
-        <table className="table">
+        <table className="table w-full">
           {/* head */}
           <thead className="bg-[#f1f1f1]">
             <tr>
@@ -147,10 +197,9 @@ export default function TableDisplay() {
               <th>Favorite Color</th>
             </tr>
           </thead>
-
           <tbody>
-            {tableData.map((item, index) => (
-              <tr key={index}>
+            {currentRows.map((item) => (
+              <tr key={item.id}>
                 <th>{item.id}</th>
                 <td>{item.name}</td>
                 <td>{item.job}</td>
@@ -158,37 +207,52 @@ export default function TableDisplay() {
               </tr>
             ))}
           </tbody>
-
-          <tfoot>
-            <div className="join">
-              <input
-                className="btn btn-square join-item"
-                type="radio"
-                name="options"
-                aria-label="1"
-                defaultChecked
-              />
-              <input
-                className="btn btn-square join-item"
-                type="radio"
-                name="options"
-                aria-label="2"
-              />
-              <input
-                className="btn btn-square join-item"
-                type="radio"
-                name="options"
-                aria-label="3"
-              />
-              <input
-                className="btn btn-square join-item"
-                type="radio"
-                name="options"
-                aria-label="4"
-              />
-            </div>
-          </tfoot>
         </table>
+      </div>
+      <div className="mt-4 flex items-center justify-between">
+        <div className="flex w-[20%] items-center justify-start space-x-4">
+          <select
+            id="rowsPerPage"
+            value={rowsPerPage}
+            onChange={handleRowsPerPageChange}
+            className="select select-bordered select-sm w-fit max-w-xs text-sm"
+          >
+            <option value={5}>5</option>
+            <option value={10}>10</option>
+            <option value={20}>20</option>
+            <option value={50}>50</option>
+          </select>
+
+          <div className="w-fit text-sm">
+            {indexOfFirstRow + 1}-{indexOfLastRow} of {maxRows}
+          </div>
+        </div>
+
+        <div className="btn-group space-x-1">
+          <button
+            className="btn btn-outline btn-xs"
+            onClick={handlePrevPage}
+            disabled={currentPage === 1}
+          >
+            «
+          </button>
+          {[...Array(totalPages)].map((_, index) => (
+            <button
+              key={index + 1}
+              className={`btn btn-outline btn-xs ${currentPage === index + 1 ? "btn-active" : ""}`}
+              onClick={() => handlePageClick(index + 1)}
+            >
+              {index + 1}
+            </button>
+          ))}
+          <button
+            className="btn btn-outline btn-xs"
+            onClick={handleNextPage}
+            disabled={currentPage === totalPages}
+          >
+            »
+          </button>
+        </div>
       </div>
     </>
   );
