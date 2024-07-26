@@ -1,0 +1,122 @@
+[
+    {
+        "id": 1,
+        "location": "YANTIAN, CHINA",
+        "lat": 22.5590503,
+        "long": 114.2324407
+    },
+    {
+        "id": 2,
+        "location": "LONG BEACH, CA",
+        "lat": 33.7701,
+        "long": -118.1937
+    },
+    {
+        "id": 3,
+        "location": "SHANGHAI, CHINA",
+        "lat": 31.2304,
+        "long": 121.4737
+    },
+    {
+        "id": 4,
+        "location": "LOS ANGELES, CA",
+        "lat": 34.0522,
+        "long": -118.2437
+    },
+    {
+        "id": 5,
+        "location": "NINGBO, CHINA",
+        "lat": 29.8683,
+        "long": 121.544
+    },
+    {
+        "id": 6,
+        "location": "SEATTLE, WA",
+        "lat": 47.6062,
+        "long": -122.3321
+    },
+    {
+        "id": 7,
+        "location": "DALIAN, CHINA",
+        "lat": 38.914,
+        "long": 121.6147
+    },
+    {
+        "id": 8,
+        "location": "OAKLAND, CA",
+        "lat": 37.8044,
+        "long": -122.2711
+    },
+    {
+        "id": 9,
+        "location": "QINGDAO, CHINA",
+        "lat": 36.0671,
+        "long": 120.3826
+    },
+    {
+        "id": 10,
+        "location": "HOUSTON, TX",
+        "lat": 29.7604,
+        "long": -95.3698
+    },
+    {
+        "id": 11,
+        "location": "TIANJIN, CHINA",
+        "lat": 39.0842,
+        "long": 117.2006
+    },
+    {
+        "id": 12,
+        "location": "NEW YORK, NY",
+        "lat": 40.7128,
+        "long": -74.006
+    },
+    {
+        "id": 13,
+        "location": "XIAMEN, CHINA",
+        "lat": 24.4798,
+        "long": 118.0894
+    },
+    {
+        "id": 14,
+        "location": "MIAMI, FL",
+        "lat": 25.7617,
+        "long": -80.1918
+    },
+    {
+        "id": 15,
+        "location": "GUANGZHOU, CHINA",
+        "lat": 23.1291,
+        "long": 113.2644
+    },
+    {
+        "id": 16,
+        "location": "CHARLESTON, SC",
+        "lat": 32.7765,
+        "long": -79.9311
+    },
+    {
+        "id": 17,
+        "location": "SHENZHEN, CHINA",
+        "lat": 22.5431,
+        "long": 114.0579
+    },
+    {
+        "id": 18,
+        "location": "SAVANNAH, GA",
+        "lat": 32.0809,
+        "long": -81.0912
+    },
+    {
+        "id": 19,
+        "location": "BEIJING, CHINA",
+        "lat": 39.9042,
+        "long": 116.4074
+    },
+    {
+        "id": 20,
+        "location": "NORFOLK, VA",
+        "lat": 36.8508,
+        "long": -76.2859
+    }
+]

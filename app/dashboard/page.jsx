@@ -82,7 +82,7 @@ export default function Dashboard() {
 
         <div className="flex flex-row space-x-5">
           {/* latest documents */}
-          <div className="flex h-96 w-[50%] flex-col bg-white p-4 text-black">
+          <div className="flex h-96 w-[50%] flex-col rounded-2xl bg-white p-4 text-black">
             <div className="mb-4 font-bold">Latest Documents</div>
             <div className="overflow-y-auto">
               {arr.map((item, index) => (
@@ -95,7 +95,7 @@ export default function Dashboard() {
           </div>
 
           {/* annoucements */}
-          <div className="flex h-full w-[50%] flex-col bg-white p-4 text-black">
+          <div className="flex h-full w-[50%] flex-col rounded-2xl bg-white p-4 text-black">
             <Annoucement />
           </div>
         </div>

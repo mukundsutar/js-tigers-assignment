@@ -55,7 +55,6 @@ export default function PieData({ chartTitle }) {
               <Cell key={`cell-${index}`} fill={entry.color} />
             ))}
           </Pie>
-          <div className="mt-4 text-center font-bold">Origin Port</div>
           <Legend
             layout="horizontal"
             verticalAlign="bottom"

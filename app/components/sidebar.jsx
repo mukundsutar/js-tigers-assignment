@@ -12,8 +12,8 @@ import Image from "next/image";
 
 export default function Sidebar() {
   const sidebarList = [
-    { label: "Dashboard", route: "", icon: DashboardIcon, accordion: false },
-    { label: "Analytics", route: "", icon: Analytics, accordion: false },
+    { label: "Dashboard", route: "/dashboard", icon: DashboardIcon, accordion: false },
+    { label: "Analytics", route: "analytics", icon: Analytics, accordion: false },
     { label: "Rate Request", route: "", icon: RateRequest, accordion: true },
     { label: "Quote", route: "", icon: Quote, accordion: true },
     { label: "Shipments", route: "", icon: Shipment, accordion: false },
@@ -24,12 +24,12 @@ export default function Sidebar() {
 
   return (
     <>
-      <ul className="menu min-h-full w-80 rounded-r-3xl bg-[#6b120a] p-4 pt-32 text-white">
+      <ul className="menu min-h-full w-72 rounded-r-3xl bg-[#6b120a] p-4 pt-32 text-white">
         {/* Sidebar content here */}
 
         {sidebarList.map((item, index) => (
           <li key={index}>
-            <a className="space-x-5">
+            <a className="space-x-5" href={item.route}>
               <Image src={item.icon} width={24} height={24} />
               <div>{item.label}</div>
               {item.accordion && <Image src={KeyDownArrow} className="from-neutral-100"/>}

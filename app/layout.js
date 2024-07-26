@@ -1,6 +1,7 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Sidebar from "./components/sidebar";
+import Navbar from "./components/navbar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,8 +18,10 @@ export default function RootLayout({ children }) {
           <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
           <div className="drawer-content flex w-full flex-col items-center justify-center">
             {/* Page content here */}
+            <Navbar />
             {children}
           </div>
+
           <div className="drawer-side">
             <label
               htmlFor="my-drawer-2"
