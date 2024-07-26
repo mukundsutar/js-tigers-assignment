@@ -15,6 +15,7 @@ import FilterAnalytics from "../components/filterAnalytics";
 import Milestones from "../components/milestones";
 import Timelines from "../components/timelines";
 import ShipmentPhase from "../components/shipmentPhase";
+import TableDisplay from "../components/tableDisplay";
 
 export default function Dashboard() {
   const pieChart = [
@@ -73,6 +74,10 @@ export default function Dashboard() {
           {shipmentPhaseArray.map((item, index) => (
             <ShipmentPhase key={index} title={item} />
           ))}
+        </div>
+
+        <div className="bg-white shadow-md p-4 rounded-2xl">
+          <TableDisplay/>
         </div>
       </div>
     </>

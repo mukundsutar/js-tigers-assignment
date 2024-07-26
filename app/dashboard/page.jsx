@@ -52,7 +52,7 @@ export default function Dashboard() {
           width={"auto"}
           height={"auto"}
           className="rounded-2xl"
-          alt="map"
+          alt="map placeholder"
         />
 
         {/* pie chart section */}

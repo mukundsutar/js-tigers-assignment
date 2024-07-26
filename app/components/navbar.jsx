@@ -28,20 +28,20 @@ export default function Navbar() {
         </div>
         <div className="flex-none space-x-3">
           <button className="btn btn-square btn-ghost">
-            <Image src={Bell} width={24} height={24} color="#000" />
+            <Image src={Bell} width={24} height={24} color="#000" alt="bell icon placeholder" />
           </button>
 
           {/* avatar */}
 
           <button className="btn btn-ghost w-fit space-x-2 px-2">
-            <Image src={ProfilePicture} width={45} height={45} />
+            <Image src={ProfilePicture} width={45} height={45} alt="profile picture placeholder"/>
 
             <div className="flex flex-col items-start">
               <p className="text-sm">Edward William</p>
               <p className="text-xs">Admin</p>
             </div>
 
-            <Image src={KeyDownArrow} width={24} height={24} />
+            <Image src={KeyDownArrow} width={24} height={24} alt="key down arrow icon placeholder"/>
           </button>
         </div>
       </div>

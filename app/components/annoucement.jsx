@@ -10,7 +10,7 @@ export default function Annoucement() {
         Soon you will see latest announcements/new in this section.
       </div>
       <div className="flex h-full w-full items-center justify-center">
-        <Image src={AnnoucementImg} width={120} height={120} />
+        <Image src={AnnoucementImg} width={120} height={120} alt="annoucement placeholder"/>
       </div>
     </>
   );

@@ -11,6 +11,7 @@ export default function DocumentListItem() {
           width={30}
           height={30}
           className="object-contain"
+          alt="pdf icon placeholder"
         />
 
         <div className="flex flex-1 flex-col items-start">

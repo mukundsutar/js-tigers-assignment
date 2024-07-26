@@ -30,9 +30,9 @@ export default function Sidebar() {
         {sidebarList.map((item, index) => (
           <li key={index}>
             <a className="space-x-5" href={item.route}>
-              <Image src={item.icon} width={24} height={24} />
+              <Image src={item.icon} width={24} height={24} alt="menu icon placeholder"/>
               <div>{item.label}</div>
-              {item.accordion && <Image src={KeyDownArrow} className="from-neutral-100"/>}
+              {item.accordion && <Image src={KeyDownArrow} className="from-neutral-100" alt="key down arrow icon placeholder"/>}
             </a>
           </li>
         ))}

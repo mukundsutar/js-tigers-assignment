@@ -15,7 +15,7 @@ export default function StatDisplay({ statTitle, statValue, statIcon }) {
         <div className="stat-figure text-secondary">
           <div className="avatar">
             <div className="w-16 rounded-2xl">
-              <Image src={statIcon} />
+              <Image src={statIcon} alt="stat icon placeholder" />
             </div>
           </div>
         </div>
