@@ -1,8 +1,9 @@
 import React from "react";
 import Bell from "../assets/icons/bell.svg";
-import KeyDownArrow from "../assets/icons/key-down-arrow.svg";
 import ProfilePicture from "../assets/profilePicture.svg";
 import Image from "next/image";
+import HamburgerIcon from "./svgIcons/hamburger";
+import KeyDownArrow from "./svgIcons/key_down_arrow";
 
 export default function Navbar() {
   return (
@@ -13,7 +14,7 @@ export default function Navbar() {
             htmlFor="my-drawer-2"
             className="btn btn-primary drawer-button lg:hidden"
           >
-            =
+            <HamburgerIcon width={"2em"} height={"2em"} />
           </label>
 
           <a className="btn btn-ghost text-xl">Dashboard</a>
@@ -30,7 +31,7 @@ export default function Navbar() {
 
           {/* avatar */}
 
-          <button className="btn btn-ghost w-fit space-x-2 px-2">
+          <button className="btn btn-ghost w-fit px-0 lg:space-x-2 lg:px-2">
             <Image
               src={ProfilePicture}
               width={45}
@@ -43,12 +44,7 @@ export default function Navbar() {
               <p className="text-xs">Admin</p>
             </div>
 
-            <Image
-              src={KeyDownArrow}
-              width={24}
-              height={24}
-              alt="key down arrow icon placeholder"
-            />
+            <KeyDownArrow width={30} height={30} />
           </button>
         </div>
       </div>

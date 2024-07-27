@@ -13,11 +13,26 @@ import ShipmentGreen from "../assets/icons/shipmentGreen.png";
 
 export default function Map() {
   const locationCoords = [
-    { coord: "top-[80px] left-[430px]", icon: ShipmentBrown },
-    { coord: "top-[124px] left-[471px]", icon: ShipmentOrange },
-    { coord: "top-[124px] left-[519px]", icon: ShipmentOrange },
-    { coord: "top-[106px] left-[508px]", icon: ShipmentYellow },
-    { coord: "top-[169px] left-[503px]", icon: ShipmentGreen },
+    {
+      coord: "top-[41px] left-[221px] lg:top-[80px] lg:left-[430px]",
+      icon: ShipmentBrown,
+    },
+    {
+      coord: "top-[62px] left-[242px] lg:top-[124px] lg:left-[471px]",
+      icon: ShipmentOrange,
+    },
+    {
+      coord: "top-[62px] left-[268px] lg:top-[124px] lg:left-[519px]",
+      icon: ShipmentOrange,
+    },
+    {
+      coord: "top-[55px] left-[262px] lg:top-[106px] lg:left-[508px]",
+      icon: ShipmentYellow,
+    },
+    {
+      coord: "top-[87px] left-[258px] lg:top-[169px] lg:left-[503px]",
+      icon: ShipmentGreen,
+    },
   ];
 
   return (
@@ -31,7 +46,7 @@ export default function Map() {
           alt="map placeholder"
         />
 
-        <select className="select select-sm absolute left-5 top-5 z-10 w-[15%] max-w-xs bg-white text-xs">
+        <select className="select select-sm absolute left-2 top-2 z-10 max-w-xs bg-white text-xs lg:left-5 lg:top-5 lg:w-[15%]">
           <option disabled selected>
             Last Milestones
           </option>
@@ -42,7 +57,7 @@ export default function Map() {
           <option>Maggie</option>
         </select>
 
-        <div className="absolute right-5 top-5 flex flex-col items-center space-y-2">
+        <div className="absolute right-2 top-2 flex items-center space-x-1 lg:right-5 lg:top-5 lg:flex-col lg:space-y-2">
           <button className="btn btn-square btn-sm flex items-center justify-center border-0 bg-[#eb5d50] fill-white">
             <BoatIcon />
           </button>
@@ -54,7 +69,7 @@ export default function Map() {
           </button>
         </div>
 
-        <div className="join join-vertical absolute bottom-5 right-5 flex w-fit flex-col items-center justify-center">
+        <div className="join join-vertical absolute bottom-2 right-2 flex w-fit flex-col items-center justify-center lg:bottom-5 lg:right-5">
           <button className="btn join-item btn-sm w-fit fill-accent p-0.5 hover:bg-secondary hover:fill-white">
             <PlusIcon />
           </button>
@@ -71,7 +86,7 @@ export default function Map() {
               src={item.icon}
               width={30}
               height={30}
-              className={`absolute ${item.coord}`}
+              className={`absolute ${item.coord} w-4 lg:w-fit`}
             />
           ))}
         </div>

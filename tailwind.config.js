@@ -7,12 +7,12 @@ module.exports = {
     "./node_modules/react-tailwindcss-datepicker/dist/index.esm.js",
   ],
   theme: {
-    // screens: {
-    //   mobile: "150px",
-    //   tablet: "640px",
-    //   laptop: "1024px",
-    //   desktop: "1280px",
-    // },
+    screens: {
+      sm: "150px",
+      md: "640px",
+      lg: "1024px",
+      xm: "1280px",
+    },
   },
   plugins: [require("daisyui")],
   daisyui: {

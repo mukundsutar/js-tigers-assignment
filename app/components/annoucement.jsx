@@ -9,8 +9,13 @@ export default function Annoucement() {
       <div className="text-base">
         Soon you will see latest announcements/new in this section.
       </div>
-      <div className="flex h-full w-full items-center justify-center">
-        <Image src={AnnoucementImg} width={120} height={120} alt="annoucement placeholder"/>
+      <div className="flex h-full w-full items-center justify-center py-6 lg:py-0">
+        <Image
+          src={AnnoucementImg}
+          width={120}
+          height={120}
+          alt="annoucement placeholder"
+        />
       </div>
     </>
   );

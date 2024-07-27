@@ -105,7 +105,7 @@ export default function Dashboard() {
 
   return (
     <>
-      <div className="flex h-full w-full flex-col space-y-5 bg-[#f1f1f1] px-10 py-5">
+      <div className="flex h-full w-full flex-col space-y-5 bg-[#f1f1f1] px-4 py-5 lg:px-10">
         {/* stats section */}
         <div className="flex w-full flex-row justify-between">
           {statsArray.map((item, index) => (
@@ -124,7 +124,7 @@ export default function Dashboard() {
         {/* pie chart section */}
         <div className="flex flex-col rounded-2xl bg-[#fff] p-4 text-[#000] shadow-md">
           <div className="flex flex-row">
-            <div className="flex w-[50%] items-start font-bold">
+            <div className="flex w-[50%] items-center font-bold lg:items-start">
               Pie Chart Analysis
             </div>
 
@@ -134,7 +134,7 @@ export default function Dashboard() {
             </div>
           </div>
 
-          <div className="flex h-fit flex-row justify-between">
+          <div className="flex h-fit flex-row justify-between overflow-x-auto pb-4 lg:pb-0">
             {pieChart.map((item, index) => (
               <PieData
                 key={index}
@@ -145,9 +145,9 @@ export default function Dashboard() {
           </div>
         </div>
 
-        <div className="flex flex-row space-x-5">
+        <div className="flex flex-col space-y-5 lg:flex-row lg:space-x-5 lg:space-y-0">
           {/* latest documents */}
-          <div className="flex h-96 w-[50%] flex-col rounded-2xl bg-white p-4 text-black shadow-md">
+          <div className="flex h-96 w-full flex-col rounded-2xl bg-white p-4 text-black shadow-md lg:w-[50%]">
             <div className="mb-4 font-bold">Latest Documents</div>
             <div className="overflow-y-auto">
               {documentData.map((item, index) => (
@@ -160,7 +160,7 @@ export default function Dashboard() {
           </div>
 
           {/* annoucements */}
-          <div className="flex h-full w-[50%] flex-col rounded-2xl bg-white p-4 text-black shadow-md">
+          <div className="flex h-full lg:w-[50%] flex-col rounded-2xl bg-white p-4 text-black shadow-md">
             <Annoucement />
           </div>
         </div>
