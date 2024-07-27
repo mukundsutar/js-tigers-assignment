@@ -8,7 +8,14 @@ export default function Navbar() {
   return (
     <>
       <div className="navbar sticky top-0 z-50 bg-base-100 text-black shadow">
-        <div className="flex-1">
+        <div className="flex-1 space-x-2">
+          <label
+            htmlFor="my-drawer-2"
+            className="btn btn-primary drawer-button lg:hidden"
+          >
+            =
+          </label>
+
           <a className="btn btn-ghost text-xl">Dashboard</a>
         </div>
         <div className="flex-none space-x-3">

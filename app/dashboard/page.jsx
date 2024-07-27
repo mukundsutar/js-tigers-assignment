@@ -110,6 +110,7 @@ export default function Dashboard() {
         <div className="flex w-full flex-row justify-between">
           {statsArray.map((item, index) => (
             <StatDisplay
+              key={index}
               statTitle={item.title}
               statValue={item.value}
               statIcon={item.icon}
