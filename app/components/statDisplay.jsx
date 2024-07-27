@@ -4,7 +4,7 @@ import React from "react";
 export default function StatDisplay({ statTitle, statValue, statIcon }) {
   return (
     <>
-      <div className="stat flex h-fit w-fit space-x-5 rounded-2xl bg-[#fff] text-[#000]">
+      <div className="stat flex h-fit w-fit space-x-5 rounded-2xl bg-[#fff] text-[#000] shadow-md">
         {/* text */}
         <div className="flex flex-col items-start justify-around">
           <div className="stat-title text-sm">{statTitle}</div>

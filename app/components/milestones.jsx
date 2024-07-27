@@ -1,6 +1,39 @@
 import React from "react";
 import { Cell, Legend, Pie, PieChart, ResponsiveContainer } from "recharts";
 
+const colorPalette = [
+  "#FF6384",
+  "#36A2EB",
+  "#FFCE56",
+  "#4BC0C0",
+  "#9966FF",
+  "#FF9F40",
+  "#FF5733",
+  "#33FF57",
+  "#3357FF",
+  "#FF33A1",
+  "#FFC300",
+  "#DAF7A6",
+  "#C70039",
+  "#900C3F",
+  "#581845",
+  "#1F618D",
+];
+
+const formatMilestoneData = (shipmentData) => {
+  const counts = shipmentData.reduce((acc, item) => {
+    const milestone = item.milestone;
+    acc[milestone] = (acc[milestone] || 0) + 1;
+    return acc;
+  }, {});
+
+  return Object.keys(counts).map((key, index) => ({
+    name: key,
+    value: counts[key],
+    color: colorPalette[index % colorPalette.length],
+  }));
+};
+
 const renderLegend = (props) => {
   const { payload } = props;
 
@@ -24,14 +57,8 @@ const renderLegend = (props) => {
   );
 };
 
-export default function Milestones() {
-  const data = [
-    { name: "Booked", value: 19, color: "#6b120a" },
-    { name: "Discharged", value: 29, color: "#eb5d50" },
-    { name: "Arrived", value: 22, color: "#f7a668" },
-    { name: "Delivered", value: 393, color: "#7bb896" },
-    { name: "Returned", value: 149, color: "#1073e6" },
-  ];
+export default function Milestones({ shipmentData }) {
+  const data = formatMilestoneData(shipmentData);
 
   return (
     <>
@@ -47,9 +74,6 @@ export default function Milestones() {
             <Pie
               data={data}
               outerRadius={80}
-              fill="#8884d8"
-              startAngle={90}
-              endAngle={450}
               dataKey="value"
               isAnimationActive={false}
               legendType="circle"

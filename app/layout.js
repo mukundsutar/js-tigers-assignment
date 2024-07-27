@@ -1,9 +1,12 @@
-import { Inter } from "next/font/google";
+import { Poppins } from "next/font/google";
 import "./globals.css";
 import Sidebar from "./components/sidebar";
 import Navbar from "./components/navbar";
 
-const inter = Inter({ subsets: ["latin"] });
+const poppins = Poppins({
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  subsets: ["latin"],
+});
 
 export const metadata = {
   title: "JS Tiger Assignment",
@@ -13,8 +16,8 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <div className="drawer lg:drawer-open scroll-smooth">
+      <body className={poppins.className}>
+        <div className="drawer scroll-smooth lg:drawer-open">
           <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
 
           <div className="drawer-content flex w-full flex-col items-center justify-center overflow-hidden">

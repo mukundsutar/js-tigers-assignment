@@ -10,9 +10,14 @@
   },
   "dependencies": {
     "clsx": "^2.1.1",
+    "date-and-time": "^3.4.1",
+    "dayjs": "^1.11.12",
+    "mongodb": "^6.8.0",
     "next": "14.2.5",
     "react": "^18",
     "react-dom": "^18",
+    "react-export-table-to-excel": "^1.0.6",
+    "react-tailwindcss-datepicker": "^1.6.6",
     "recharts": "^2.12.7"
   },
   "devDependencies": {

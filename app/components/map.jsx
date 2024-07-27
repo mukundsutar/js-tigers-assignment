@@ -22,7 +22,7 @@ export default function Map() {
 
   return (
     <>
-      <div className="relative">
+      <div className="relative rounded-2xl shadow-md">
         <Image
           src={MapPicture}
           width={"auto"}
@@ -31,7 +31,7 @@ export default function Map() {
           alt="map placeholder"
         />
 
-        <select className="select select-sm absolute left-5 top-5 z-10 w-[15%] max-w-xs text-xs">
+        <select className="select select-sm absolute left-5 top-5 z-10 w-[15%] max-w-xs bg-white text-xs">
           <option disabled selected>
             Last Milestones
           </option>
@@ -46,20 +46,20 @@ export default function Map() {
           <button className="btn btn-square btn-sm flex items-center justify-center border-0 bg-[#eb5d50] fill-white">
             <BoatIcon />
           </button>
-          <button className="btn btn-square btn-sm border-0 fill-[#616C76]">
+          <button className="btn btn-square btn-sm border-0 bg-white fill-[#616C76] hover:bg-secondary hover:fill-white">
             <AirIcon />
           </button>
-          <button className="btn btn-square btn-sm border-0 fill-[#616C76]">
+          <button className="btn btn-square btn-sm border-0 bg-white fill-[#616C76] hover:bg-secondary hover:fill-white">
             <LandIcon />
           </button>
         </div>
 
         <div className="join join-vertical absolute bottom-5 right-5 flex w-fit flex-col items-center justify-center">
-          <button className="btn join-item btn-sm w-fit p-0.5">
+          <button className="btn join-item btn-sm w-fit fill-accent p-0.5 hover:bg-secondary hover:fill-white">
             <PlusIcon />
           </button>
-          <div className="divider m-0 h-1 bg-[#f1f1f1] px-1"></div>
-          <button className="btn join-item btn-sm w-fit p-0.5">
+          <div className="divider m-0 h-0 bg-accent px-1"></div>
+          <button className="btn join-item btn-sm w-fit fill-accent p-0.5 hover:bg-secondary hover:fill-white">
             <MinusIcon />
           </button>
         </div>

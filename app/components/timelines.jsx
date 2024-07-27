@@ -1,6 +1,11 @@
 import React from "react";
 import { Cell, Legend, Pie, PieChart, ResponsiveContainer } from "recharts";
 
+const colorPalette = {
+  onTime: "#7bb896", // Green for on time
+  late: "#f7a668", // Orange for late
+};
+
 const renderLegend = (props) => {
   const { payload } = props;
 
@@ -24,11 +29,33 @@ const renderLegend = (props) => {
   );
 };
 
-export default function Timelines() {
-  const data = [
-    { name: "Late", value: 10, color: "#f7a668" },
-    { name: "On Time", value: 681, color: "#7bb896" },
+const formatTimelineData = (shipmentData) => {
+  const counts = { onTime: 0, late: 0 };
+
+  shipmentData.forEach((item) => {
+    const estimatedDeparture = new Date(item.estimated_time_of_departure);
+    const actualDeparture = new Date(item.actual_time_of_departure);
+    const estimatedArrival = new Date(item.estimated_time_of_arrival);
+    const actualArrival = new Date(item.actual_time_of_arrival);
+
+    if (
+      actualDeparture > estimatedDeparture ||
+      actualArrival > estimatedArrival
+    ) {
+      counts.late += 1;
+    } else {
+      counts.onTime += 1;
+    }
+  });
+
+  return [
+    { name: "Late", value: counts.late, color: colorPalette.late },
+    { name: "On Time", value: counts.onTime, color: colorPalette.onTime },
   ];
+};
+
+export default function Timelines({ shipmentData }) {
+  const data = formatTimelineData(shipmentData);
 
   return (
     <>
@@ -42,9 +69,6 @@ export default function Timelines() {
             <Pie
               data={data}
               outerRadius={80}
-              fill="#8884d8"
-              startAngle={90}
-              endAngle={450}
               dataKey="value"
               isAnimationActive={false}
               legendType="circle"

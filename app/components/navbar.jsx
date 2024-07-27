@@ -7,7 +7,7 @@ import Image from "next/image";
 export default function Navbar() {
   return (
     <>
-      <div className="navbar sticky top-0 z-50 bg-[#F1F1F1] text-black shadow">
+      <div className="navbar sticky top-0 z-50 bg-base-100 text-black shadow">
         <div className="flex-1">
           <a className="btn btn-ghost text-xl">Dashboard</a>
         </div>
@@ -17,7 +17,6 @@ export default function Navbar() {
               src={Bell}
               width={24}
               height={24}
-              color="#000"
               alt="bell icon placeholder"
             />
           </button>

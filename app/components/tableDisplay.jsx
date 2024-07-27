@@ -1,6 +1,7 @@
 "use client";
 import clsx from "clsx";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
+import { DownloadTableExcel } from "react-export-table-to-excel";
 
 export default function TableDisplay() {
   const tableData = [
@@ -308,6 +309,7 @@ export default function TableDisplay() {
 
   const [currentPage, setCurrentPage] = useState(1);
   const [rowsPerPage, setRowsPerPage] = useState(5);
+  const tableRef = useRef(null);
 
   const indexOfLastRow = currentPage * rowsPerPage;
   const indexOfFirstRow = indexOfLastRow - rowsPerPage;
@@ -342,25 +344,31 @@ export default function TableDisplay() {
 
   return (
     <>
-      <div className="flex flex-row justify-end w-full">
-        <button className="btn btn-sm rounded-full bg-[#eb5d50] px-4 m-2 text-white">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            height="24px"
-            viewBox="0 -960 960 960"
-            width="24px"
-            fill="#fff"
-          >
-            <path d="M480-320 280-520l56-58 104 104v-326h80v326l104-104 56 58-200 200ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z" />
-          </svg>
-          Download
-        </button>
+      <div className="flex w-full flex-row justify-end">
+        <DownloadTableExcel
+          filename="shipment data"
+          sheet="shipment"
+          currentTableRef={tableRef.current}
+        >
+          <button className="btn btn-sm m-2 rounded-full bg-secondary px-4 text-white">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="24px"
+              viewBox="0 -960 960 960"
+              width="24px"
+              fill="#fff"
+            >
+              <path d="M480-320 280-520l56-58 104 104v-326h80v326l104-104 56 58-200 200ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z" />
+            </svg>
+            Download
+          </button>
+        </DownloadTableExcel>
       </div>
 
       <div className="overflow-x-auto rounded-t-2xl">
-        <table className="table min-w-full overflow-x-scroll">
+        <table className="table min-w-full overflow-x-scroll" ref={tableRef}>
           {/* head */}
-          <thead className="bg-[#f1f1f1]">
+          <thead className="bg-base-100">
             <tr>
               <th className={clsx(headerStyle)}>HBL#</th>
               <th className={clsx(headerStyle)}>MBL#</th>

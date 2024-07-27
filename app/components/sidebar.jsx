@@ -1,38 +1,122 @@
 import React from "react";
-import Analytics from "../assets/icons/analytics.svg";
-import Archive from "../assets/icons/archive.svg";
-import DashboardIcon from "../assets/icons/dashboard-icon.svg";
-import History from "../assets/icons/history.svg";
-import Quote from "../assets/icons/quote.svg";
-import RateRequest from "../assets/icons/rate-request.svg";
-import Shipment from "../assets/icons/shipment.svg";
-import User from "../assets/icons/user.svg";
-import KeyDownArrow from "../assets/icons/key-down-arrow.svg";
-import Image from "next/image";
+import AnalyticsIcon from "./svgIcons/analytics";
+import ArchiveIcon from "./svgIcons/archive";
+import HistoryIcon from "./svgIcons/history";
+import QuoteIcon from "./svgIcons/quote";
+import RateRequestIcon from "./svgIcons/rate_request";
+import ShipmentIcon from "./svgIcons/shipment_package";
+import UserIcon from "./svgIcons/user";
+import KeyDownArrow from "./svgIcons/key_down_arrow";
+import DashboardIcon from "./svgIcons/dashboard";
+import clsx from "clsx";
 
 export default function Sidebar() {
+  const iconStyle = "text-white ";
+
   const sidebarList = [
-    { label: "Dashboard", route: "/dashboard", icon: DashboardIcon, accordion: false },
-    { label: "Analytics", route: "analytics", icon: Analytics, accordion: false },
-    { label: "Rate Request", route: "", icon: RateRequest, accordion: true },
-    { label: "Quote", route: "", icon: Quote, accordion: true },
-    { label: "Shipments", route: "", icon: Shipment, accordion: false },
-    { label: "User List", route: "", icon: User, accordion: false },
-    { label: "Archive", route: "", icon: Archive, accordion: true },
-    { label: "History", route: "", icon: History, accordion: false },
+    {
+      label: "Dashboard",
+      route: "/dashboard",
+      icon: (
+        <DashboardIcon
+          width={"2em"}
+          height={"2em"}
+          className={clsx(iconStyle)}
+        />
+      ),
+      accordion: false,
+    },
+    {
+      label: "Analytics",
+      route: "analytics",
+      icon: (
+        <AnalyticsIcon
+          width={"2em"}
+          height={"2em"}
+          className={clsx(iconStyle)}
+        />
+      ),
+      accordion: false,
+    },
+    {
+      label: "Rate Request",
+      route: "",
+      icon: (
+        <RateRequestIcon
+          width={"2em"}
+          height={"2em"}
+          className={clsx(iconStyle)}
+        />
+      ),
+      accordion: true,
+    },
+    {
+      label: "Quote",
+      route: "",
+      icon: (
+        <QuoteIcon width={"2em"} height={"2em"} className={clsx(iconStyle)} />
+      ),
+      accordion: true,
+    },
+    {
+      label: "Shipments",
+      route: "",
+      icon: (
+        <ShipmentIcon
+          width={"2em"}
+          height={"2em"}
+          className={clsx(iconStyle)}
+        />
+      ),
+      accordion: false,
+    },
+    {
+      label: "User List",
+      route: "",
+      icon: (
+        <UserIcon width={"2em"} height={"2em"} className={clsx(iconStyle)} />
+      ),
+      accordion: false,
+    },
+    {
+      label: "Archive",
+      route: "",
+      icon: (
+        <ArchiveIcon width={"2em"} height={"2em"} className={clsx(iconStyle)} />
+      ),
+      accordion: true,
+    },
+    {
+      label: "History",
+      route: "",
+      icon: (
+        <HistoryIcon width={"2em"} height={"2em"} className={clsx(iconStyle)} />
+      ),
+      accordion: false,
+    },
   ];
 
   return (
     <>
-      <ul className="menu min-h-full w-72 rounded-r-3xl bg-[#6b120a] p-4 pt-32 text-white">
+      <ul className="menu min-h-full w-72 rounded-r-3xl bg-primary p-4 pt-32 text-white">
         {/* Sidebar content here */}
 
         {sidebarList.map((item, index) => (
           <li key={index}>
-            <a className="space-x-5" href={item.route}>
-              <Image src={item.icon} width={24} height={24} alt="menu icon placeholder"/>
-              <div>{item.label}</div>
-              {item.accordion && <Image src={KeyDownArrow} className="from-neutral-100" alt="key down arrow icon placeholder"/>}
+            <a className="flex h-14 items-center space-x-5 hover:bg-[#7d2e27]">
+              {item.icon}
+
+              <div className="flex-1 text-white active:text-primary">
+                {item.label}
+              </div>
+
+              {item.accordion && (
+                <KeyDownArrow
+                  width={"2em"}
+                  height={"2em"}
+                  className={clsx(iconStyle)}
+                />
+              )}
             </a>
           </li>
         ))}

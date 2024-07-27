@@ -17,7 +17,7 @@ export default function CustomTabs() {
   ];
 
   return (
-    <div role="tablist" className="tabs  flex w-fit gap-4">
+    <div role="tablist" className="tabs flex w-fit gap-4">
       {tabs.map((tab, index) => (
         <a
           key={index}

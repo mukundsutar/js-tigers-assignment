@@ -3,12 +3,12 @@ import React from "react";
 import { Cell, Legend, Pie, PieChart, ResponsiveContainer } from "recharts";
 
 const renderLegend = (props) => {
-  const { payload, chartTitle } = props;
+  const { payload, chartLabel } = props;
 
   return (
     <>
-      <div className="mb-4 text-center text-sm">{chartTitle}</div>
-      <ul>
+      <div className="mb-4 text-center text-sm">{chartLabel}</div>
+      <ul className="h-40 space-y-2 overflow-y-auto">
         {payload.map((entry, index) => (
           <li
             key={`item-${index}`}
@@ -18,7 +18,7 @@ const renderLegend = (props) => {
               className="m-1 h-3 w-3 rounded-full"
               style={{ backgroundColor: entry.color }}
             ></div>
-            {entry.value}
+            <div className="truncate">{entry.value}</div>
           </li>
         ))}
       </ul>
@@ -26,40 +26,28 @@ const renderLegend = (props) => {
   );
 };
 
-export default function PieData({ chartTitle }) {
-  const data = [
-    { name: "NHAVA SHEVA, INDIA", value: 55, color: "#6b120a" },
-    { name: "HONG KONG, HONG KONG", value: 15, color: "#eb5d50" },
-    { name: "YANTIAN, CHINA", value: 10, color: "#f7a668" },
-    { name: "DALIAN, CHINA", value: 5, color: "#7bb896" },
-    { name: "LONDON GATEWAY PORT, UK", value: 5, color: "#1073e6" },
-    { name: "OTHER", value: 10, color: "#856562" },
-  ];
-
+export default function PieData({ chartLabel, chartData }) {
   return (
     <div className="w-fit">
-      <ResponsiveContainer width={200} height={350}>
+      <ResponsiveContainer width={200} height={400}>
         <PieChart>
           <Pie
-            data={data}
+            data={chartData}
             innerRadius={50}
             outerRadius={80}
-            fill="#8884d8"
-            startAngle={90}
-            endAngle={450}
             dataKey="value"
             isAnimationActive={false}
             legendType="circle"
           >
-            {data.map((entry, index) => (
-              <Cell key={`cell-${index}`} fill={entry.color} />
+            {chartData.map((item, index) => (
+              <Cell key={`cell-${index}`} fill={item.color} />
             ))}
           </Pie>
           <Legend
             layout="horizontal"
             verticalAlign="bottom"
             align="center"
-            content={(props) => renderLegend({ ...props, chartTitle })}
+            content={(props) => renderLegend({ ...props, chartLabel })}
             iconType="circle"
             iconSize={12}
           />
