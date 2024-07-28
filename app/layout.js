@@ -20,7 +20,7 @@ export default function RootLayout({ children }) {
         <div className="drawer scroll-smooth lg:drawer-open">
           <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
 
-          <div className="drawer-content flex w-full flex-col items-center justify-center overflow-hidden">
+          <div className="drawer-content flex w-full flex-col items-center justify-center">
             {/* Page content here */}
             <Navbar />
             {children}

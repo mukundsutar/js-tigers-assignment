@@ -5,6 +5,9 @@ import { DownloadTableExcel } from "react-export-table-to-excel";
 import KeyLeftArrow from "./svgIcons/key_left_arrow";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import PerfectScrollbar from "react-perfect-scrollbar";
+import "react-perfect-scrollbar/dist/css/styles.css";
+import "../custom-scrollbar.css";
 
 export default function TableDisplay({ shipmentData, loading }) {
   const [currentPage, setCurrentPage] = useState(1);
@@ -65,67 +68,72 @@ export default function TableDisplay({ shipmentData, loading }) {
         </DownloadTableExcel>
       </div>
 
-      <div className="overflow-x-auto rounded-t-2xl">
-        <table className="table min-w-full overflow-x-scroll" ref={tableRef}>
-          {/* head */}
-          <thead className="bg-base-100">
-            <tr>
-              <th className={clsx(headerStyle)}>HBL#</th>
-              <th className={clsx(headerStyle)}>MBL#</th>
-              <th className={clsx(headerStyle)}>PO# / REF#</th>
-              <th className={clsx(headerStyle)}>Recipt</th>
-              <th className={clsx(headerStyle)}>Loading</th>
-              <th className={clsx(headerStyle)}>Discharge</th>
-              <th className={clsx(headerStyle)}>Delivery</th>
-              <th className={clsx(headerStyle)}>Booking#</th>
-              <th className={clsx(headerStyle)}>Size Type</th>
-              <th className={clsx(headerStyle)}>Carrier</th>
-              <th className={clsx(headerStyle)}>Commodity</th>
-              <th className={clsx(headerStyle)}>Milestone</th>
-              <th className={clsx(headerStyle)}>Milestone Group</th>
-            </tr>
-          </thead>
-          <tbody>
-            {loading
-              ? Array.from({ length: rowsPerPage }).map((_, index) => (
-                  <tr key={index}>
-                    {Array.from({ length: 13 }).map((_, cellIndex) => (
-                      <td key={cellIndex} className={clsx(cellStyle)}>
-                        <Skeleton width="100%" className="my-2" />
+      <div className="rounded-t-2xl">
+        <PerfectScrollbar>
+          <table className="table min-w-full pb-10" ref={tableRef}>
+            {/* head */}
+            <thead className="bg-base-100">
+              <tr>
+                <th className={clsx(headerStyle)}>HBL#</th>
+                <th className={clsx(headerStyle)}>MBL#</th>
+                <th className={clsx(headerStyle)}>PO# / REF#</th>
+                <th className={clsx(headerStyle)}>Recipt</th>
+                <th className={clsx(headerStyle)}>Loading</th>
+                <th className={clsx(headerStyle)}>Discharge</th>
+                <th className={clsx(headerStyle)}>Delivery</th>
+                <th className={clsx(headerStyle)}>Booking#</th>
+                <th className={clsx(headerStyle)}>Size Type</th>
+                <th className={clsx(headerStyle)}>Carrier</th>
+                <th className={clsx(headerStyle)}>Commodity</th>
+                <th className={clsx(headerStyle)}>Milestone</th>
+                <th className={clsx(headerStyle)}>Milestone Group</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              {loading
+                ? Array.from({ length: rowsPerPage }).map((_, index) => (
+                    <tr key={index}>
+                      {Array.from({ length: 13 }).map((_, cellIndex) => (
+                        <td key={cellIndex} className={clsx(cellStyle)}>
+                          <Skeleton width="100%" className="my-2" />
+                        </td>
+                      ))}
+                    </tr>
+                  ))
+                : currentRows.map((item) => (
+                    <tr key={item.id}>
+                      <td className={clsx(cellStyle)}>{item.hbl_no}</td>
+                      <td className={clsx(cellStyle)}>{item.mbl_no}</td>
+                      <td className={clsx(cellStyle, "font-[500]")}>
+                        PO# {item.po_ref_no}
                       </td>
-                    ))}
-                  </tr>
-                ))
-              : currentRows.map((item) => (
-                  <tr key={item.id}>
-                    <td className={clsx(cellStyle)}>{item.hbl_no}</td>
-                    <td className={clsx(cellStyle)}>{item.mbl_no}</td>
-                    <td className={clsx(cellStyle, "font-[500]")}>
-                      PO# {item.po_ref_no}
-                    </td>
-                    <td className={clsx(cellStyle)}>
-                      {item.recipt} <br /> {item.recipt_date}
-                    </td>
-                    <td className={clsx(cellStyle)}>
-                      {item.loading} <br />
-                      {item.loading_date}
-                    </td>
-                    <td className={clsx(cellStyle)}>
-                      {item.discharge} <br /> {item.discharge_date}
-                    </td>
-                    <td className={clsx(cellStyle)}>
-                      {item.delivery} <br /> {item.delivery_date}
-                    </td>
-                    <td className={clsx(cellStyle)}>{item.booking_no}</td>
-                    <td className={clsx(cellStyle)}>{item.size_type}</td>
-                    <td className={clsx(cellStyle)}>{item.carrier}</td>
-                    <td className={clsx(cellStyle)}>{item.commodity}</td>
-                    <td className={clsx(cellStyle)}>{item.milestone}</td>
-                    <td className={clsx(cellStyle)}>{item.milestone_group}</td>
-                  </tr>
-                ))}
-          </tbody>
-        </table>
+                      <td className={clsx(cellStyle)}>
+                        {item.recipt} <br /> {item.recipt_date}
+                      </td>
+                      <td className={clsx(cellStyle)}>
+                        {item.loading} <br />
+                        {item.loading_date}
+                      </td>
+                      <td className={clsx(cellStyle)}>
+                        {item.discharge} <br /> {item.discharge_date}
+                      </td>
+                      <td className={clsx(cellStyle)}>
+                        {item.delivery} <br /> {item.delivery_date}
+                      </td>
+                      <td className={clsx(cellStyle)}>{item.booking_no}</td>
+                      <td className={clsx(cellStyle)}>{item.size_type}</td>
+                      <td className={clsx(cellStyle)}>{item.carrier}</td>
+                      <td className={clsx(cellStyle)}>{item.commodity}</td>
+                      <td className={clsx(cellStyle)}>{item.milestone}</td>
+                      <td className={clsx(cellStyle)}>
+                        {item.milestone_group}
+                      </td>
+                    </tr>
+                  ))}
+            </tbody>
+          </table>
+        </PerfectScrollbar>
       </div>
 
       <div className="mt-4 flex items-center justify-between">

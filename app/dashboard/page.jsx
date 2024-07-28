@@ -12,6 +12,9 @@ import CustomTabs from "../components/customTabs";
 import Map from "../components/map";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import PerfectScrollbar from "react-perfect-scrollbar";
+import "react-perfect-scrollbar/dist/css/styles.css";
+import "../custom-scrollbar.css";
 
 export default function Dashboard() {
   // api fetch shipment
@@ -161,18 +164,20 @@ export default function Dashboard() {
           {/* latest documents */}
           <div className="flex h-96 w-full flex-col rounded-2xl bg-white p-4 text-black shadow-md lg:w-[50%]">
             <div className="mb-4 font-bold">Latest Documents</div>
-            <div className="overflow-y-auto">
+            {/* <div className="overflow-y-auto"> */}
+            <PerfectScrollbar>
               {documentData.map((item, index) => (
-                <>
+                <div className="mr-8">
                   {index != 0 && <div className="divider my-2"></div>}
                   <DocumentListItem
                     key={index}
                     documentData={item}
                     loading={documentLoading}
                   />
-                </>
+                </div>
               ))}
-            </div>
+            </PerfectScrollbar>
+            {/* </div> */}
           </div>
 
           {/* annoucements */}

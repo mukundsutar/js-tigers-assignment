@@ -1,0 +1,50 @@
+/* custom-scrollbar.css */
+
+.ps__rail-y,
+.ps__rail-x {
+  scroll-behavior: smooth;
+}
+
+/* y-axis */
+.ps__rail-y {
+  width: 10px !important;
+  right: 2px;
+}
+
+.ps__thumb-y {
+  background-color: #7b4a4a;
+  border-radius: 10px;
+  width: 8px !important;
+}
+
+.ps__rail-y:hover .ps__thumb-y,
+.ps__rail-y.ps--clicking .ps__thumb-y {
+  background-color: #7b4a4a;
+}
+
+.ps__rail-y:hover,
+.ps__rail-y.ps--clicking {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* x-axis */
+.ps__rail-x {
+  height: 10px !important;
+  bottom: 2px;
+}
+
+.ps__thumb-x {
+  background-color: #7b4a4a;
+  border-radius: 10px;
+  height: 8px !important;
+}
+
+.ps__rail-x:hover .ps__thumb-x,
+.ps__rail-x.ps--clicking .ps__thumb-x {
+  background-color: #7b4a4a;
+}
+
+.ps__rail-x:hover,
+.ps__rail-x.ps--clicking {
+  background-color: rgba(0, 0, 0, 0.1);
+}
