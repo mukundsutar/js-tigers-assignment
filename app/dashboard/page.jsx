@@ -167,7 +167,7 @@ export default function Dashboard() {
             {/* <div className="overflow-y-auto"> */}
             <PerfectScrollbar>
               {documentData.map((item, index) => (
-                <div className="mr-8">
+                <div key={index} className="mr-8" >
                   {index != 0 && <div className="divider my-2"></div>}
                   <DocumentListItem
                     key={index}

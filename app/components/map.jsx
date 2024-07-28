@@ -87,6 +87,7 @@ export default function Map() {
               width={30}
               height={30}
               className={`absolute ${item.coord} w-4 lg:w-fit`}
+              alt="coord pins"
             />
           ))}
         </div>
