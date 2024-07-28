@@ -3,7 +3,14 @@ import React from "react";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
-export default function StatDisplay({ statTitle, statValue, statIcon }) {
+export default function StatDisplay({
+  statTitle,
+  statValue,
+  statIcon,
+  loading,
+}) {
+  statValue = statValue + ` ${statTitle == "Utilization" ? "" : " Bookings"}`;
+
   return (
     <>
       <div className="stat flex h-fit w-fit space-x-2 rounded-2xl bg-[#fff] p-3 text-[#000] shadow-md lg:w-fit lg:px-6">
@@ -11,8 +18,7 @@ export default function StatDisplay({ statTitle, statValue, statIcon }) {
         <div className="flex flex-col items-start justify-around px-1.5 lg:flex-1 lg:px-0">
           <div className="stat-title text-sm lg:text-lg">{statTitle}</div>
           <div className="stat-value text-base lg:text-lg">
-            {statValue || <Skeleton width={22} inline />}
-            {statTitle == "Utilization" ? "" : " Bookings"}
+            {loading ? <Skeleton width={100} inline /> : statValue}
           </div>
         </div>
 

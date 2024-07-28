@@ -124,6 +124,7 @@ export default function Dashboard() {
               statTitle={item.title}
               statValue={item.value}
               statIcon={item.icon}
+              loading={shipmentLoading}
             />
           ))}
         </div>
