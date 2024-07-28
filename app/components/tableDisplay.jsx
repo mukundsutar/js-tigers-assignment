@@ -70,7 +70,7 @@ export default function TableDisplay({ shipmentData, loading }) {
 
       <div className="rounded-t-2xl">
         <PerfectScrollbar>
-          <table className="table min-w-full pb-10" ref={tableRef}>
+          <table className="table min-w-full mb-4" ref={tableRef}>
             {/* head */}
             <thead className="bg-base-100">
               <tr>

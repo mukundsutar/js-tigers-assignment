@@ -29,14 +29,15 @@
 
 /* x-axis */
 .ps__rail-x {
-  height: 10px !important;
-  bottom: 2px;
+  height: 14px !important;
+  bottom: 0px;
+  border-radius: 10px;
 }
 
 .ps__thumb-x {
   background-color: #7b4a4a;
   border-radius: 10px;
-  height: 8px !important;
+  height: 12px !important;
 }
 
 .ps__rail-x:hover .ps__thumb-x,
