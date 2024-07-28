@@ -1,15 +1,19 @@
+"use client";
 import React from "react";
 import Bell from "../assets/icons/bell.svg";
 import ProfilePicture from "../assets/profilePicture.svg";
 import Image from "next/image";
 import HamburgerIcon from "./svgIcons/hamburger";
 import KeyDownArrow from "./svgIcons/key_down_arrow";
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
+  const pathname = usePathname();
+
   return (
     <>
       <div className="navbar sticky top-0 z-50 bg-base-100 text-black shadow">
-        <div className="flex-1 space-x-2">
+        <div className="flex-1 space-x-2 lg:ml-6">
           <label
             htmlFor="my-drawer-2"
             className="btn btn-primary drawer-button lg:hidden"
@@ -17,7 +21,9 @@ export default function Navbar() {
             <HamburgerIcon width={"2em"} height={"2em"} />
           </label>
 
-          <a className="btn btn-ghost text-xl">Dashboard</a>
+          <div className="text-xl font-bold capitalize">
+            {pathname.replace("/", "")}
+          </div>
         </div>
         <div className="flex-none space-x-3">
           <button className="btn btn-square btn-ghost">
