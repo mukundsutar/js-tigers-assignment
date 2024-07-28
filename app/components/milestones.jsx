@@ -1,5 +1,8 @@
 import React from "react";
+import MediaQuery from "react-responsive";
 import { Cell, Legend, Pie, PieChart, ResponsiveContainer } from "recharts";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const colorPalette = [
   "#FF6384",
@@ -57,7 +60,7 @@ const renderLegend = (props) => {
   );
 };
 
-export default function Milestones({ shipmentData }) {
+export default function Milestones({ shipmentData, loading }) {
   const data = formatMilestoneData(shipmentData);
 
   return (
@@ -69,29 +72,42 @@ export default function Milestones({ shipmentData }) {
       </div>
 
       <div className="flex w-full flex-row items-center justify-center">
-        <ResponsiveContainer width={300} height={200}>
-          <PieChart>
-            <Pie
-              data={data}
-              outerRadius={80}
-              dataKey="value"
-              isAnimationActive={false}
-              legendType="circle"
-            >
-              {data.map((entry, index) => (
-                <Cell key={`cell-${index}`} fill={entry.color} />
-              ))}
-            </Pie>
-            <Legend
-              layout="vertical"
-              verticalAlign="middle"
-              align="right"
-              content={renderLegend}
-              iconType="circle"
-              iconSize={12}
-            />
-          </PieChart>
-        </ResponsiveContainer>
+        {loading ? (
+          <div className="my-3 flex flex-row items-center justify-center space-x-4">
+            <Skeleton circle={true} height={175} width={175} />
+            <Skeleton count={5} width={100} />
+          </div>
+        ) : (
+          <ResponsiveContainer width={300} height={200}>
+            <PieChart>
+              <Pie
+                data={data}
+                outerRadius={80}
+                dataKey="value"
+                isAnimationActive={false}
+                legendType="circle"
+                blendStroke={true}
+              >
+                {data.map((entry, index) => (
+                  <Cell
+                    key={`cell-${index}`}
+                    fill={entry.color}
+                    style={{ outline: "none" }}
+                    stroke=""
+                  />
+                ))}
+              </Pie>
+              <Legend
+                layout="vertical"
+                verticalAlign="middle"
+                align="right"
+                content={renderLegend}
+                iconType="circle"
+                iconSize={12}
+              />
+            </PieChart>
+          </ResponsiveContainer>
+        )}
       </div>
     </>
   );

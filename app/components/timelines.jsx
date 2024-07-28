@@ -1,5 +1,7 @@
 import React from "react";
 import { Cell, Legend, Pie, PieChart, ResponsiveContainer } from "recharts";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const colorPalette = {
   onTime: "#7bb896", // Green for on time
@@ -54,7 +56,7 @@ const formatTimelineData = (shipmentData) => {
   ];
 };
 
-export default function Timelines({ shipmentData }) {
+export default function Timelines({ shipmentData, loading }) {
   const data = formatTimelineData(shipmentData);
 
   return (
@@ -64,29 +66,37 @@ export default function Timelines({ shipmentData }) {
       </div>
 
       <div className="flex w-full flex-row items-center justify-center">
-        <ResponsiveContainer width={300} height={200}>
-          <PieChart>
-            <Pie
-              data={data}
-              outerRadius={80}
-              dataKey="value"
-              isAnimationActive={false}
-              legendType="circle"
-            >
-              {data.map((entry, index) => (
-                <Cell key={`cell-${index}`} fill={entry.color} />
-              ))}
-            </Pie>
-            <Legend
-              layout="vertical"
-              verticalAlign="middle"
-              align="right"
-              content={renderLegend}
-              iconType="circle"
-              iconSize={12}
-            />
-          </PieChart>
-        </ResponsiveContainer>
+        {loading ? (
+          <div className="my-3 flex flex-row items-center justify-center space-x-4">
+            <Skeleton circle={true} height={175} width={175} />
+            <Skeleton count={5} width={100} />
+          </div>
+        ) : (
+          <ResponsiveContainer width={300} height={200}>
+            <PieChart>
+              <Pie
+                data={data}
+                outerRadius={80}
+                dataKey="value"
+                isAnimationActive={false}
+                legendType="circle"
+                blendStroke
+              >
+                {data.map((entry, index) => (
+                  <Cell key={`cell-${index}`} fill={entry.color} />
+                ))}
+              </Pie>
+              <Legend
+                layout="vertical"
+                verticalAlign="middle"
+                align="right"
+                content={renderLegend}
+                iconType="circle"
+                iconSize={12}
+              />
+            </PieChart>
+          </ResponsiveContainer>
+        )}
       </div>
     </>
   );

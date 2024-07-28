@@ -1,14 +1,19 @@
 import Image from "next/image";
 import React from "react";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 export default function StatDisplay({ statTitle, statValue, statIcon }) {
   return (
     <>
-      <div className="stat flex h-fit w-fit space-x-2 rounded-2xl bg-[#fff] p-3 text-[#000] shadow-md lg:w-[23%] lg:px-6">
+      <div className="stat flex h-fit w-fit space-x-2 rounded-2xl bg-[#fff] p-3 text-[#000] shadow-md lg:w-fit lg:px-6">
         {/* text */}
-        <div className="flex flex-col items-start justify-around lg:flex-1">
-          <div className="stat-title text-sm">{statTitle}</div>
-          <div className="stat-value text-lg">{statValue}</div>
+        <div className="flex flex-col items-start justify-around px-1.5 lg:flex-1 lg:px-0">
+          <div className="stat-title text-sm lg:text-lg">{statTitle}</div>
+          <div className="stat-value text-base lg:text-lg">
+            {statValue || <Skeleton width={22} inline />}
+            {statTitle == "Utilization" ? "" : " Bookings"}
+          </div>
         </div>
 
         {/* image */}

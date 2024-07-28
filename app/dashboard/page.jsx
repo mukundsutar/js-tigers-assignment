@@ -10,22 +10,32 @@ import BookingCancelled from "../assets/icons/booking-cancelled.svg";
 import Utilization from "../assets/icons/utilization.svg";
 import CustomTabs from "../components/customTabs";
 import Map from "../components/map";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 export default function Dashboard() {
   // api fetch shipment
+  const [shipmentLoading, setShipmentLoading] = useState(true);
   const [shipmentData, setShipmentData] = useState([]);
   useEffect(() => {
     fetch("/api/shipments")
       .then((response) => response.json())
-      .then((data) => setShipmentData(data));
+      .then((data) => {
+        setShipmentData(data);
+        setShipmentLoading(false);
+      });
   }, []);
 
   // api fetch document
+  const [documentLoading, setDocumentLoading] = useState(true);
   const [documentData, setDocumentData] = useState([]);
   useEffect(() => {
     fetch("/api/documents")
       .then((response) => response.json())
-      .then((data) => setDocumentData(data));
+      .then((data) => {
+        setDocumentData(data);
+        setDocumentLoading(false);
+      });
   }, []);
 
   // stats calculating
@@ -140,6 +150,7 @@ export default function Dashboard() {
                 key={index}
                 chartLabel={item.chartLabel}
                 chartData={item.data}
+                loading={shipmentLoading}
               />
             ))}
           </div>
@@ -153,14 +164,18 @@ export default function Dashboard() {
               {documentData.map((item, index) => (
                 <>
                   {index != 0 && <div className="divider my-2"></div>}
-                  <DocumentListItem key={index} documentData={item} />
+                  <DocumentListItem
+                    key={index}
+                    documentData={item}
+                    loading={documentLoading}
+                  />
                 </>
               ))}
             </div>
           </div>
 
           {/* annoucements */}
-          <div className="flex h-full lg:w-[50%] flex-col rounded-2xl bg-white p-4 text-black shadow-md">
+          <div className="flex h-full flex-col rounded-2xl bg-white p-4 text-black shadow-md lg:w-[50%]">
             <Annoucement />
           </div>
         </div>

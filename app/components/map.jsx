@@ -46,7 +46,7 @@ export default function Map() {
           alt="map placeholder"
         />
 
-        <select className="select select-sm absolute left-2 top-2 z-10 max-w-xs bg-white text-xs lg:left-5 lg:top-5 lg:w-[15%]">
+        <select className="select select-sm absolute left-2 top-2 max-w-xs bg-white text-xs lg:left-5 lg:top-5 lg:w-[15%]">
           <option disabled selected>
             Last Milestones
           </option>

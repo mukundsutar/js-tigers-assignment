@@ -16,7 +16,7 @@ export default function Sidebar() {
   const sidebarList = [
     {
       label: "Dashboard",
-      route: "/dashboard",
+      route: "dashboard",
       icon: (
         <DashboardIcon
           width={"2em"}
@@ -98,12 +98,15 @@ export default function Sidebar() {
 
   return (
     <>
-      <ul className="menu min-h-full w-72 rounded-r-3xl bg-primary p-4 pt-32 text-white">
+      <ul className="z-20000 menu min-h-full w-72 rounded-r-3xl bg-primary p-4 pt-32 text-white">
         {/* Sidebar content here */}
 
         {sidebarList.map((item, index) => (
           <li key={index}>
-            <a className="flex h-14 items-center space-x-5 hover:bg-[#7d2e27]">
+            <a
+              href={item.route}
+              className="flex h-14 items-center space-x-5 hover:bg-[#7d2e27]"
+            >
               {item.icon}
 
               <div className="flex-1 text-white active:text-primary">
