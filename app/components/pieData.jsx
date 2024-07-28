@@ -34,9 +34,9 @@ export default function PieData({ chartLabel, chartData, loading }) {
       <div className="w-fit">
         {loading ? (
           <div className="mx-4 my-4 flex flex-col items-center">
-            <Skeleton circle={true} height={100} width={100} />
+            <Skeleton circle={true} height={175} width={175} />
             <Skeleton width={100} className="mt-4" />
-            <Skeleton count={5} width={150} className="mt-4" />
+            <Skeleton count={5} width={150} className="mt-2" />
           </div>
         ) : (
           <ResponsiveContainer width={200} height={400}>
