@@ -22,8 +22,8 @@ export default function FilterAnalytics({ shipmentData }) {
           <option disabled selected>
             Select
           </option>
-          <option>Han Solo</option>
-          <option>Greedo</option>
+          <option>40HC</option>
+          <option>20HC</option>
         </select>
       </div>
 

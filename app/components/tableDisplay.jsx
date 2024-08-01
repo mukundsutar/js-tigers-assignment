@@ -8,6 +8,7 @@ import "react-loading-skeleton/dist/skeleton.css";
 import PerfectScrollbar from "react-perfect-scrollbar";
 import "react-perfect-scrollbar/dist/css/styles.css";
 import "../custom-scrollbar.css";
+import date from "date-and-time";
 
 export default function TableDisplay({ shipmentData, loading }) {
   const [currentPage, setCurrentPage] = useState(1);
@@ -45,6 +46,13 @@ export default function TableDisplay({ shipmentData, loading }) {
   const cellStyle = "whitespace-nowrap text-xs py-2 px-6";
   const headerStyle = "whitespace-nowrap text-sm font-[800] px-6";
 
+  const dateFormatter = (unformatted_date) => {
+    let customDate = new Date(unformatted_date.substring(0, 10));
+    customDate = date.format(customDate, "MMM DD, YYYY");
+
+    return customDate;
+  };
+
   return (
     <>
       <div className="flex w-full flex-row justify-end">
@@ -70,7 +78,7 @@ export default function TableDisplay({ shipmentData, loading }) {
 
       <div className="rounded-t-2xl">
         <PerfectScrollbar>
-          <table className="table min-w-full mb-4" ref={tableRef}>
+          <table className="table mb-4 min-w-full" ref={tableRef}>
             {/* head */}
             <thead className="bg-base-100">
               <tr>
@@ -109,17 +117,19 @@ export default function TableDisplay({ shipmentData, loading }) {
                         PO# {item.po_ref_no}
                       </td>
                       <td className={clsx(cellStyle)}>
-                        {item.recipt} <br /> {item.recipt_date}
+                        {item.recipt} <br /> {dateFormatter(item.recipt_date)}
                       </td>
                       <td className={clsx(cellStyle)}>
                         {item.loading} <br />
-                        {item.loading_date}
+                        {dateFormatter(item.loading_date)}
                       </td>
                       <td className={clsx(cellStyle)}>
-                        {item.discharge} <br /> {item.discharge_date}
+                        {item.discharge} <br />
+                        {dateFormatter(item.discharge_date)}
                       </td>
                       <td className={clsx(cellStyle)}>
-                        {item.delivery} <br /> {item.delivery_date}
+                        {item.delivery} <br />
+                        {dateFormatter(item.delivery_date)}
                       </td>
                       <td className={clsx(cellStyle)}>{item.booking_no}</td>
                       <td className={clsx(cellStyle)}>{item.size_type}</td>
