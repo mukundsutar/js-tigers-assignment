@@ -17,10 +17,16 @@ export default function TableDisplay({ shipmentData, loading }) {
 
   const indexOfLastRow = currentPage * rowsPerPage;
   const indexOfFirstRow = indexOfLastRow - rowsPerPage;
-  const currentRows = shipmentData.slice(indexOfFirstRow, indexOfLastRow);
+  const filteredShipmentData = shipmentData.filter(
+    (item) => item.commodity === "TEXTILES",
+  );
+  const currentRows = filteredShipmentData.slice(
+    indexOfFirstRow,
+    indexOfLastRow,
+  );
   const maxRows = shipmentData.length;
 
-  const totalPages = Math.ceil(shipmentData.length / rowsPerPage);
+  const totalPages = Math.ceil(filteredShipmentData.length / rowsPerPage);
 
   const handlePrevPage = () => {
     if (currentPage > 1) {

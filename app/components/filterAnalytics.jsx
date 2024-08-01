@@ -7,23 +7,36 @@ export default function FilterAnalytics({ shipmentData }) {
     startDate: new Date(),
     endDate: new Date().setMonth(1),
   });
+  const [selectedCommodity, setSelectedCommodity] = useState("");
 
   const handleValueChange = (newValue) => {
     console.log("newValue:", newValue);
     setValue(newValue);
   };
 
+  const handleSelectChange = (event) => {
+    setSelectedCommodity(event.target.value);
+  };
+  const uniqueCommodities = [
+    ...new Set(shipmentData.map((item) => item.commodity)),
+  ];
+
   return (
     <>
       {/* type */}
       <div className="flex w-[25%] flex-row items-center space-x-5">
         <div className="font-bold">Type</div>
-        <select className="select select-bordered select-sm w-full rounded-full">
+        <select
+          className="select select-bordered select-sm w-full rounded-full"
+          value={selectedCommodity}
+          onChange={handleSelectChange}
+        >
           <option disabled selected>
             Select
           </option>
-          <option>40HC</option>
-          <option>20HC</option>
+          {uniqueCommodities.map((item, index) => (
+            <option key={index}>{item}</option>
+          ))}
         </select>
       </div>
 
